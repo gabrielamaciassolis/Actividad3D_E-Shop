@@ -13,3 +13,9 @@ In the project directory, you can run:
 Icons made by <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 
 Converted to Icon with : https://icoconvert.com/ -
+
+Libraries:
+
+https://react-bootstrap.github.io/
+
+https://bootswatch.com/
