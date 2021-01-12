@@ -1,0 +1,29 @@
+{
+  "name": "actividad3d-e-shop",
+  "version": "1.0.0",
+  "description": "E-shop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client":"npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gamacias/Actividad3D_E-Shop.git"
+  },
+  "author": "Gabriela Macias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gamacias/Actividad3D_E-Shop/issues"
+  },
+  "homepage": "https://github.com/gamacias/Actividad3D_E-Shop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.7"
+  }
+}
