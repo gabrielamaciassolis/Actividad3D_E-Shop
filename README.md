@@ -1,9 +1,11 @@
-This E-Commerce project was started following the tutorial "MERN E-commerce from Scratch" of Brad Traversy (https://www.traversymedia.com/)
+##Actividad3D E-Shop
 
-It will evolve al new features will be added:
+- Classy E-Commerse site
+
+With:
 
 - Under each product detail, a TextBox will allow direct comunication with e-Shop Admin via a realtime messaging system.
-- WhichList botton and checkout to allow estimations and personalizations of the products
+- WhichList botton and checkout to allow asking for estimations and personalizations of the products
 - Blog "Como"
 - Admin Blog
 - Profesional Services
@@ -19,9 +21,11 @@ Express
 
 In the project directory "frontend", you can run:
 
-### `npm start`
+`npm start`
 
 ### Credits:
+
+This E-Commerce project was started following the tutorial "MERN E-commerce from Scratch" of Brad Traversy (https://www.traversymedia.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
