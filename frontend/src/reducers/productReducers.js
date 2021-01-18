@@ -5,7 +5,7 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
-} from '../constants/productConstant'
+} from '../constants/productConstants'
 
 export const producListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
@@ -26,7 +26,7 @@ export const producDetailsReducer = (
 ) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
-      return { loading: true, ...state}
+      return { loading: true, ...state }
     case PRODUCT_DETAILS_SUCCESS:
       return { loading: false, product: action.payload }
     case PRODUCT_DETAILS_FAIL:

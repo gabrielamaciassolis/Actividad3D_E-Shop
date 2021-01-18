@@ -19,9 +19,7 @@ Express
 
 ## Available Scripts
 
-In the project directory "frontend", you can run:
-
-`npm start`
+`npm run dev`
 
 ### Credits:
 
