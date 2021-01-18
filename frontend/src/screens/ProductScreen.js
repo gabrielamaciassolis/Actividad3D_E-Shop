@@ -14,12 +14,12 @@ const ProductScreen = ({ history, match }) => {
 
   const dispatch = useDispatch()
 
-  const productDetails = useSelector((state) => state.productDetails)
-  const { loading, error, product } = productDetails
-
   useEffect(() => {
     dispatch(listProductsDetails(match.params.id))
   }, [dispatch, match])
+
+  const productDetails = useSelector((state) => state.productDetails)
+  const { loading, error, product } = productDetails
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
