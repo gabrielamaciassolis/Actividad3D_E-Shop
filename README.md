@@ -2,14 +2,6 @@
 
 - Classy E-Commerse site
 
-With:
-
-- Under each product detail, a TextBox will allow direct comunication with e-Shop Admin via a realtime messaging system.
-- WhichList botton and checkout to allow asking for estimations and personalizations of the products
-- Blog "Como"
-- Admin Blog
-- Profesional Services
-
 ## Technologies:
 
 React
