@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const reviewSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
-    rating: { type: String, required: true },
+    rating: { type: Number, required: true },
     comment: { type: String, required: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -30,11 +30,10 @@ const productSchema = mongoose.Schema(
     image: {
       type: String,
       required: true,
-      unique: true,
     },
     brand: {
       type: String,
-      required: false,
+      required: true,
     },
     category: {
       type: String,
@@ -72,4 +71,5 @@ const productSchema = mongoose.Schema(
 )
 
 const Product = mongoose.model('Product', productSchema)
+
 export default Product

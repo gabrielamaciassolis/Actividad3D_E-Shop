@@ -1,16 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Form,
-  Button,
-  Card,
-  ListGroupItem,
-} from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 
@@ -22,7 +13,6 @@ const CartScreen = ({ match, location, history }) => {
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
-
   const { cartItems } = cart
 
   useEffect(() => {
@@ -45,21 +35,15 @@ const CartScreen = ({ match, location, history }) => {
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Tu carrito está vacío.
-            <Link to='/'> Volver a la tienda</Link>
+            Your cart is empty <Link to='/'>Go Back</Link>
           </Message>
         ) : (
           <ListGroup variant='flush'>
             {cartItems.map((item) => (
-              <ListGroupItem key={item.product}>
+              <ListGroup.Item key={item.product}>
                 <Row>
                   <Col md={2}>
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fluid
-                      rounded
-                    ></Image>
+                    <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
@@ -92,7 +76,7 @@ const CartScreen = ({ match, location, history }) => {
                     </Button>
                   </Col>
                 </Row>
-              </ListGroupItem>
+              </ListGroup.Item>
             ))}
           </ListGroup>
         )}
@@ -103,7 +87,7 @@ const CartScreen = ({ match, location, history }) => {
             <ListGroup.Item>
               <h2>
                 Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-                productos
+                items
               </h2>
               $
               {cartItems
@@ -117,7 +101,7 @@ const CartScreen = ({ match, location, history }) => {
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
-                Proceder al Pago
+                Proceed To Checkout
               </Button>
             </ListGroup.Item>
           </ListGroup>

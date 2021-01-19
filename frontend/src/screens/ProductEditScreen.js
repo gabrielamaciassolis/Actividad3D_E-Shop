@@ -15,7 +15,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
-  //   const [brand, setBrand] = useState('')
+  const [brand, setBrand] = useState('')
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
@@ -44,7 +44,7 @@ const ProductEditScreen = ({ match, history }) => {
         setName(product.name)
         setPrice(product.price)
         setImage(product.image)
-        // setBrand(product.brand)
+        setBrand(product.brand)
         setCategory(product.category)
         setCountInStock(product.countInStock)
         setDescription(product.description)
@@ -83,7 +83,7 @@ const ProductEditScreen = ({ match, history }) => {
         name,
         price,
         image,
-        // brand,
+        brand,
         category,
         description,
         countInStock,
@@ -97,7 +97,7 @@ const ProductEditScreen = ({ match, history }) => {
         Go Back
       </Link>
       <FormContainer>
-        <h1>Editar Producto</h1>
+        <h1>Edit Product</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
@@ -107,43 +107,43 @@ const ProductEditScreen = ({ match, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Nombre</Form.Label>
+              <Form.Label>Name</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='nombre'
+                placeholder='Enter name'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='price'>
-              <Form.Label>Precio</Form.Label>
+              <Form.Label>Price</Form.Label>
               <Form.Control
                 type='number'
-                placeholder='precio'
+                placeholder='Enter price'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='image'>
-              <Form.Label>Imagen</Form.Label>
+              <Form.Label>Image</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='Imagen url'
+                placeholder='Enter image url'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
               <Form.File
                 id='image-file'
-                label='Elegir Imagen'
+                label='Choose File'
                 custom
                 onChange={uploadFileHandler}
               ></Form.File>
               {uploading && <Loader />}
             </Form.Group>
 
-            {/* <Form.Group controlId='brand'>
+            <Form.Group controlId='brand'>
               <Form.Label>Brand</Form.Label>
               <Form.Control
                 type='text'
@@ -151,42 +151,40 @@ const ProductEditScreen = ({ match, history }) => {
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
-            </Form.Group> */}
+            </Form.Group>
 
             <Form.Group controlId='countInStock'>
-              <Form.Label>Cantidad en Stock</Form.Label>
+              <Form.Label>Count In Stock</Form.Label>
               <Form.Control
                 type='number'
-                placeholder='Cantidad en Stock'
+                placeholder='Enter countInStock'
                 value={countInStock}
                 onChange={(e) => setCountInStock(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='category'>
-              <Form.Label>Categoria</Form.Label>
+              <Form.Label>Category</Form.Label>
               <Form.Control
                 type='text'
-                placeholder='categoria'
+                placeholder='Enter category'
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='description'>
-              <Form.Label>Descripcion</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control
-                as='textarea'
-                rows={3}
                 type='text'
-                placeholder='descripcion'
+                placeholder='Enter description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Button type='submit' variant='primary'>
-              Actualizar
+              Update
             </Button>
           </Form>
         )}

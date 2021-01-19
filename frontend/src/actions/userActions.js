@@ -126,7 +126,6 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
@@ -138,12 +137,16 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       payload: data,
     })
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
     dispatch({
       type: USER_DETAILS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
     })
   }
 }
@@ -171,13 +174,22 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,
     })
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    })
+    localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
     dispatch({
       type: USER_UPDATE_PROFILE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
     })
   }
 }

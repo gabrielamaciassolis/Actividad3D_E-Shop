@@ -47,10 +47,10 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     await product.remove()
-    res.json({ message: 'Producto Borrado' })
+    res.json({ message: 'Product removed' })
   } else {
     res.status(404)
-    throw new Error('Producto no encontrado')
+    throw new Error('Product not found')
   }
 })
 
@@ -59,15 +59,15 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: 'Producto Ejemplo',
+    name: 'Sample name',
     price: 0,
     user: req.user._id,
     image: '/images/sample.jpg',
-    // brand: 'Sample brand',
-    category: 'Categoria Ejemplo',
+    brand: 'Sample brand',
+    category: 'Sample category',
     countInStock: 0,
     numReviews: 0,
-    description: 'Description Ejemplo',
+    description: 'Sample description',
   })
 
   const createdProduct = await product.save()
@@ -83,7 +83,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     price,
     description,
     image,
-    // brand,
+    brand,
     category,
     countInStock,
   } = req.body
@@ -95,7 +95,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.price = price
     product.description = description
     product.image = image
-    // product.brand = brand
+    product.brand = brand
     product.category = category
     product.countInStock = countInStock
 
