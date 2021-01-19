@@ -60,7 +60,7 @@ const ProductScreen = ({ history, match }) => {
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
-        Go Back
+        Regresar
       </Link>
       {loading ? (
         <Loader />
@@ -86,7 +86,7 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>
-                  Description: {product.description}
+                  Descripción: {product.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -95,7 +95,7 @@ const ProductScreen = ({ history, match }) => {
                 <ListGroup variant='flush'>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Price:</Col>
+                      <Col>Precio:</Col>
                       <Col>
                         <strong>${product.price}</strong>
                       </Col>
@@ -104,7 +104,7 @@ const ProductScreen = ({ history, match }) => {
 
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col>Estatus:</Col>
                       <Col>
                         {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
                       </Col>
@@ -114,7 +114,7 @@ const ProductScreen = ({ history, match }) => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
-                        <Col>Qty</Col>
+                        <Col>Cantidad</Col>
                         <Col>
                           <Form.Control
                             as='select'
@@ -141,7 +141,7 @@ const ProductScreen = ({ history, match }) => {
                       type='button'
                       disabled={product.countInStock === 0}
                     >
-                      Add To Cart
+                      Agregar al carrito
                     </Button>
                   </ListGroup.Item>
                 </ListGroup>
@@ -150,8 +150,8 @@ const ProductScreen = ({ history, match }) => {
           </Row>
           <Row>
             <Col md={6}>
-              <h2>Reviews</h2>
-              {product.reviews.length === 0 && <Message>No Reviews</Message>}
+              <h2>Opiniones</h2>
+              {product.reviews.length === 0 && <Message>Sin Opiniones</Message>}
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
@@ -162,10 +162,10 @@ const ProductScreen = ({ history, match }) => {
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
+                  <h2>Danos tu opinión</h2>
                   {successProductReview && (
                     <Message variant='success'>
-                      Review submitted successfully
+                      Opinión enviada correctamente
                     </Message>
                   )}
                   {loadingProductReview && <Loader />}
@@ -182,15 +182,15 @@ const ProductScreen = ({ history, match }) => {
                           onChange={(e) => setRating(e.target.value)}
                         >
                           <option value=''>Select...</option>
-                          <option value='1'>1 - Poor</option>
-                          <option value='2'>2 - Fair</option>
-                          <option value='3'>3 - Good</option>
-                          <option value='4'>4 - Very Good</option>
-                          <option value='5'>5 - Excellent</option>
+                          <option value='1'>1 - Pobre</option>
+                          <option value='2'>2 - Justo</option>
+                          <option value='3'>3 - Bien</option>
+                          <option value='4'>4 - Muy Bien</option>
+                          <option value='5'>5 - Excelente</option>
                         </Form.Control>
                       </Form.Group>
                       <Form.Group controlId='comment'>
-                        <Form.Label>Comment</Form.Label>
+                        <Form.Label>Comentario</Form.Label>
                         <Form.Control
                           as='textarea'
                           row='3'
