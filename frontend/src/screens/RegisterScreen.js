@@ -44,55 +44,59 @@ const RegisterScreen = ({ location, history }) => {
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Nombre</Form.Label>
           <Form.Control
             type='name'
-            placeholder='Enter name'
+            required
+            placeholder='nombre'
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>Email</Form.Label>
           <Form.Control
             type='email'
-            placeholder='Enter email'
+            required
+            placeholder='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='password'>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Contraseña</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Enter password'
+            required
+            placeholder='******'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='confirmPassword'>
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label>Confirmar contraseña</Form.Label>
           <Form.Control
             type='password'
-            placeholder='Confirm password'
+            required
+            placeholder='******'
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Register
+          Registrarse
         </Button>
       </Form>
 
       <Row className='py-3'>
         <Col>
-          Have an Account?{' '}
+          Tienes una cuenta?{' '}
           <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-            Login
+            Iniciar sesión
           </Link>
         </Col>
       </Row>

@@ -67,53 +67,57 @@ const ProfileScreen = ({ location, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='Enter name'
+                required
+                placeholder='nombre'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='email'>
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>Email</Form.Label>
               <Form.Control
                 type='email'
-                placeholder='Enter email'
+                required
+                placeholder='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='password'>
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 type='password'
-                placeholder='Enter password'
+                required
+                placeholder='******'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='confirmPassword'>
-              <Form.Label>Confirm Password</Form.Label>
+              <Form.Label>Confirma contraseña</Form.Label>
               <Form.Control
                 type='password'
-                placeholder='Confirm password'
+                required
+                placeholder='******'
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Button type='submit' variant='primary'>
-              Update
+              Actualizar
             </Button>
           </Form>
         )}
       </Col>
       <Col md={9}>
-        <h2>My Orders</h2>
+        <h2>Mis Ordenes</h2>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
@@ -123,10 +127,10 @@ const ProfileScreen = ({ location, history }) => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>DATE</th>
+                <th>FECHA</th>
                 <th>TOTAL</th>
-                <th>PAID</th>
-                <th>DELIVERED</th>
+                <th>PAGO</th>
+                <th>ENVIADO</th>
                 <th></th>
               </tr>
             </thead>
@@ -153,7 +157,7 @@ const ProfileScreen = ({ location, history }) => {
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
                       <Button className='btn-sm' variant='light'>
-                        Details
+                        Detalles
                       </Button>
                     </LinkContainer>
                   </td>
