@@ -17,3 +17,4 @@ steps:
     ScriptType: 'Inline Script'
     InlineScript: 'npm install --prefix frontend && npm run build --prefix frontend'
 
+- task: PublishBuildArtifacts@1
