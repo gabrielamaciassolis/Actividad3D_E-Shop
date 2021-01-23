@@ -8,6 +8,9 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
+import path from 'path'
+//import uploadFileToBlob  from './actions/azureStorageActions'
+import { BlobServiceClient, ContainerClient } from '@azure/storage-blob'
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -52,6 +55,67 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }, [dispatch, history, productId, product, successUpdate])
 
+  function checkFileType(file) {
+    const filetypes = /jpg|jpeg|png/
+    const extname = filetypes.test(
+      path.extname(file.originalname).toLowerCase()
+    )
+    const mimetype = filetypes.test(file.mimetype)
+
+    if (extname && mimetype) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  // THIS IS SAMPLE CODE ONLY - DON'T STORE TOKEN IN PRODUCTION CODE
+  const sasToken =
+    process.env.storagesastoken ||
+    'sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacx&se=2021-03-13T14:33:29Z&st=2021-01-22T06:33:29Z&spr=https&sig=gAvPc3KgfpZOOKussREdLvDlEV3lMOkq%2FHLzDNZ%2FMos%3D' // Fill string with your SAS token
+  const containerName = `cloudimages`
+  const storageAccountName =
+    process.env.storageresourcename || 'actividad3dstorage' // Fill string with your Storage resource name
+
+  const createBlobInContainer = async (containerClient, file) => {
+    const filename = file.name + '-' + Date.now()
+    // create blobClient for container
+    const blobClient = containerClient.getBlockBlobClient(filename)
+
+    // set mimetype as determined from browser with file upload control
+    const options = { blobHTTPHeaders: { blobContentType: file.type } }
+
+    // upload file
+    await blobClient.uploadBrowserData(file, options)
+    // await blobClient.uploadBrowserData(file, options)
+    const filenameout = `https://${storageAccountName}.blob.core.windows.net/${containerName}/${filename}`
+
+    return filenameout
+  }
+
+  const uploadFileToBlob = async (file) => {
+    if (!file) return {}
+
+    // get BlobService = notice `?` is pulled out of sasToken - if created in Azure portal
+    const blobService = new BlobServiceClient(
+      `https://${storageAccountName}.blob.core.windows.net/?${sasToken}`
+    )
+
+    // get Container - full public read access
+    const containerClient = blobService.getContainerClient(containerName)
+
+    // await containerClient.createIfNotExists({
+    //   access: 'container',
+    // })
+
+    // upload file
+    const data = await createBlobInContainer(containerClient, file)
+
+    return data
+    //    // get list of blobs in container
+    //    return getBlobsInContainer(containerClient);
+  }
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0]
     const formData = new FormData()
@@ -65,7 +129,12 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
 
-      const { data } = await axios.post('/api/upload', formData, config)
+      if (checkFileType(file)) {
+        throw new Error('Solo imagenes!')
+      }
+      const data = await uploadFileToBlob(file)
+      console.log(data)
+      // const { data } = await axios.post('/api/upload', formData, config)
 
       setImage(data)
       setUploading(false)
@@ -131,7 +200,7 @@ const ProductEditScreen = ({ match, history }) => {
               <Form.Control
                 type='text'
                 placeholder='Ingrese imagen url'
-                value={image}
+                value={image || ''}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
               <Form.File
