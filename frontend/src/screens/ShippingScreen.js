@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { saveShippingAddress } from '../actions/cartActions'
+import { paisesArr } from '../constants/paisesConstants'
 
 const ShippingScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
@@ -18,6 +19,8 @@ const ShippingScreen = ({ history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
+
+    console.log(country)
     dispatch(saveShippingAddress({ address, city, postalCode, country }))
     history.push('/payment')
   }
@@ -25,13 +28,13 @@ const ShippingScreen = ({ history }) => {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
-      <h1>Shipping</h1>
+      <h1>Entrega</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='address'>
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Dirección</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter address'
+            placeholder='Ingresa dirección de entrega'
             value={address}
             required
             onChange={(e) => setAddress(e.target.value)}
@@ -39,21 +42,21 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId='city'>
-          <Form.Label>City</Form.Label>
+          <Form.Label>Ciudad</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter city'
+            placeholder='Ciudad'
             value={city}
             required
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId='postalCode'>
-          <Form.Label>Postal Code</Form.Label>
+        <Form.Group controlId='Codigo postal'>
+          <Form.Label>Codigo postal</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Enter postal code'
+            placeholder='Codigo postal'
             value={postalCode}
             required
             onChange={(e) => setPostalCode(e.target.value)}
@@ -61,18 +64,22 @@ const ShippingScreen = ({ history }) => {
         </Form.Group>
 
         <Form.Group controlId='country'>
-          <Form.Label>Country</Form.Label>
+          <Form.Label>Pais</Form.Label>
           <Form.Control
+            as='select'
             type='text'
-            placeholder='Enter country'
             value={country}
             required
             onChange={(e) => setCountry(e.target.value)}
-          ></Form.Control>
+          >
+            {paisesArr.map((pais) => (
+              <option key={pais.toString()}>{pais}</option>
+            ))}
+          </Form.Control>
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Continue
+          Continuar
         </Button>
       </Form>
     </FormContainer>

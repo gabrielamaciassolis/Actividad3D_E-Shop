@@ -8,6 +8,7 @@
     "start": "node backend/server.js",
     "server": "nodemon backend/server",
     "client": "npm start --prefix frontend",
+    "build:client": "set \"GENERATE_SOURCEMAP=false\" && npm run build --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seeder",
     "data:delete": "node backend/seeder -d",
