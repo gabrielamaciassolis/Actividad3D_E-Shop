@@ -24,7 +24,7 @@ const Header = () => {
             <Navbar.Brand>
               <img
                 alt=''
-                src='/logo.png'
+                src='/logo_t.png'
                 width='50'
                 height='50'
                 className='d-inline-block align-middle'

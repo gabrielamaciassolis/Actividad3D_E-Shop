@@ -1,5 +1,5 @@
-import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import dotenv from 'dotenv'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,6 +12,7 @@ import path from 'path'
 //import uploadFileToBlob  from './actions/azureStorageActions'
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob'
 
+dotenv.config()
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
 
