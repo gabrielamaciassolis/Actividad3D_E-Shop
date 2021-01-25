@@ -25,7 +25,8 @@
   --white: #fff;
   --gray: #888;
   --gray-dark: #343a40;
-  --primary: #78c2ad;
+  /* --primary: #78c2ad; */
+  --primary: #00695c;
   --secondary: #f3969a;
   --success: #56cc9d;
   --info: #6cc3d5;
@@ -6217,7 +6218,8 @@ a.close.disabled {
   vertical-align: text-top !important;
 }
 .bg-primary {
-  background-color: #78c2ad !important;
+  /* background-color: #78c2ad !important; */
+  background-color: #73a0a6 !important;
 }
 a.bg-primary:focus,
 a.bg-primary:hover,

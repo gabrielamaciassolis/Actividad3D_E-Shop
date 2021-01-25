@@ -117,7 +117,9 @@ const OrderScreen = ({ match, history }) => {
                 <Message variant='danger'>No Enviado</Message>
               )}
             </ListGroup.Item>
-
+            Trabajamos sobre pedido en todos nuestros diseños y tardamos de 7 a
+            10 dias hábiles.
+            <ListGroup.Item></ListGroup.Item>
             <ListGroup.Item>
               <h2>Metodo de Pago</h2>
               <p>
@@ -130,7 +132,6 @@ const OrderScreen = ({ match, history }) => {
                 <Message variant='danger'>No Pagado</Message>
               )}
             </ListGroup.Item>
-
             <ListGroup.Item>
               <h2>Productos en la orden</h2>
               {order.orderItems.length === 0 ? (

@@ -7,7 +7,7 @@ import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 import { USER_DETAILS_RESET } from '../constants/userConstants'
-
+import Meta from '../components/Meta'
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
 
@@ -26,12 +26,10 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100)
+  cart.shippingPrice = addDecimals(200)
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)))
   cart.totalPrice = (
-    Number(cart.itemsPrice) +
-    Number(cart.shippingPrice) +
-    Number(cart.taxPrice)
+    Number(cart.itemsPrice) + Number(cart.shippingPrice)
   ).toFixed(2)
 
   const orderCreate = useSelector((state) => state.orderCreate)
@@ -62,6 +60,7 @@ const PlaceOrderScreen = ({ history }) => {
 
   return (
     <>
+      <Meta />
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
         <Col md={8}>
@@ -157,6 +156,12 @@ const PlaceOrderScreen = ({ history }) => {
                 >
                   Proceder al pago
                 </Button>
+              </ListGroup.Item>
+
+              <ListGroup.Item>
+              Trabajamos sobre pedido en todos nuestros diseños y tardamos de 7 a 10 dias hábiles.
+              Agradecemos tu comprensión y tu confianza. Si das click en comprar, entendemos que aceptas ésta condición.
+              De cualquier manera, si llegamos a tener tus productos antes de lo indicado, te los enviaremos con mucho gusto.
               </ListGroup.Item>
             </ListGroup>
           </Card>

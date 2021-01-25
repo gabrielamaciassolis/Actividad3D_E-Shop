@@ -7,6 +7,7 @@ import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { listMyOrders } from '../actions/orderActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
+import Meta from '../components/Meta'
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState('')
@@ -54,6 +55,8 @@ const ProfileScreen = ({ location, history }) => {
   }
 
   return (
+    <>
+    <Meta/>
     <Row>
       <Col md={3}>
         <h2>User Profile</h2>
@@ -65,6 +68,7 @@ const ProfileScreen = ({ location, history }) => {
         ) : error ? (
           <Message variant='danger'>{error}</Message>
         ) : (
+         
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
               <Form.Label>Nombre</Form.Label>
@@ -168,6 +172,7 @@ const ProfileScreen = ({ location, history }) => {
         )}
       </Col>
     </Row>
+    </>
   )
 }
 

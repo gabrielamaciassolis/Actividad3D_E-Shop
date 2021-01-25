@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Container, NavDropdown, Row, Col } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 
@@ -18,15 +18,38 @@ const Header = () => {
 
   return (
     <header>
+      <Navbar bg='light'>
+        <Container className='d-flex flex-sm-row flex-column'>
+          <Nav.Link>
+            <a
+              href='https://wa.me/528122881759?text=Hola%20Actividad3D'
+              target='_blank'
+            >
+              <i class='fab fa-whatsapp'></i> <strong>+52 81 2288 1759</strong>
+            </a>
+          </Nav.Link>
+
+          <Nav.Link>
+            <a
+              href='mailto:el.geek.encantador@gmail.com?subject=Hola%20Actividad3D'
+              target='_blank'
+            >
+              <i class='far fa-envelope'></i>{' '}
+              <strong>el.geek.encantador@gmail.com</strong>
+            </a>
+          </Nav.Link>
+        </Container>
+      </Navbar>
+
       <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
               <img
                 alt=''
-                src='/logo_t.png'
-                width='50'
-                height='50'
+                src='/logo_thumb.png'
+                width='70'
+                height='70'
                 className='d-inline-block align-middle'
               />{' '}
               <strong>Actividad3D</strong>
