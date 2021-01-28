@@ -159,9 +159,12 @@ const PlaceOrderScreen = ({ history }) => {
               </ListGroup.Item>
 
               <ListGroup.Item>
-              Trabajamos sobre pedido en todos nuestros diseños y tardamos de 7 a 10 dias hábiles.
-              Agradecemos tu comprensión y tu confianza. Si das click en comprar, entendemos que aceptas ésta condición.
-              De cualquier manera, si llegamos a tener tus productos antes de lo indicado, te los enviaremos con mucho gusto.
+                Trabajamos sobre pedido en todos nuestros diseños y tardamos de
+                7 a 10 dias hábiles. Agradecemos tu comprensión y tu confianza.
+                Si das click en "Proceder al pago", entendemos que aceptas ésta
+                condición. De cualquier manera, si llegamos a tener tus
+                productos antes de lo indicado, te los enviaremos con mucho
+                gusto.
               </ListGroup.Item>
             </ListGroup>
           </Card>

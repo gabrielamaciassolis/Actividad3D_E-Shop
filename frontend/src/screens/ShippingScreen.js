@@ -69,15 +69,16 @@ const ShippingScreen = ({ history }) => {
           <Form.Group controlId='country'>
             <Form.Label>Pais</Form.Label>
             <Form.Control
-              as='select'
+              // as='select'
               type='text'
+              placeholder='pais'
               value={country}
               required
               onChange={(e) => setCountry(e.target.value)}
             >
-              {paisesArr.map((pais) => (
+              {/* {paisesArr.map((pais) => (
                 <option key={pais.toString()}>{pais}</option>
-              ))}
+              ))} */}
             </Form.Control>
           </Form.Group>
 
