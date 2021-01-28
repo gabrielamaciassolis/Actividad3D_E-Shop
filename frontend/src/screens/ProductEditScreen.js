@@ -73,7 +73,7 @@ const ProductEditScreen = ({ match, history }) => {
   // THIS IS SAMPLE CODE ONLY - DON'T STORE TOKEN IN PRODUCTION CODE
   const sasToken =
     process.env.storagesastoken ||
-    'sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacx&se=2021-03-13T14:33:29Z&st=2021-01-22T06:33:29Z&spr=https&sig=gAvPc3KgfpZOOKussREdLvDlEV3lMOkq%2FHLzDNZ%2FMos%3D' // Fill string with your SAS token
+    'sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacx&se=2021-03-13T14:33:29Z&st=2021-01-22T06:33:29Z&spr=https&sig=gAvPc3KgfpZOOKussREdLvDlEV3lMOkq%2FHLzDNZ%2FMos%3D' // Fto be removed soon
   const containerName = `cloudimages`
   const storageAccountName =
     process.env.storageresourcename || 'actividad3dstorage' // Fill string with your Storage resource name

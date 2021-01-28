@@ -25,7 +25,8 @@ const Header = () => {
               href='https://wa.me/528122881759?text=Hola%20Actividad3D'
               target='_blank'
             >
-              <i class='fab fa-whatsapp'></i> <strong>+52 81 2288 1759</strong>
+              <i className='fab fa-whatsapp'></i>{' '}
+              <strong>+52 81 2288 1759</strong>
             </a>
           </Nav.Link>
 
@@ -34,7 +35,7 @@ const Header = () => {
               href='mailto:el.geek.encantador@gmail.com?subject=Hola%20Actividad3D'
               target='_blank'
             >
-              <i class='far fa-envelope'></i>{' '}
+              <i className='far fa-envelope'></i>{' '}
               <strong>el.geek.encantador@gmail.com</strong>
             </a>
           </Nav.Link>
@@ -49,7 +50,7 @@ const Header = () => {
                 alt=''
                 src='/logo_thumb.png'
                 width='70'
-                height='70'
+                height='60'
                 className='d-inline-block align-middle'
               />{' '}
               <strong>Actividad3D</strong>

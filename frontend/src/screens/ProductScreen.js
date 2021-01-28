@@ -6,6 +6,7 @@ import Rating from '../components/Rating'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import Meta from '../components/Meta'
+
 import {
   listProductDetails,
   createProductReview,
@@ -86,7 +87,10 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>
-                  Descripción: {product.description}
+                  Descripción:{' '}
+                  <div
+                    dangerouslySetInnerHTML={{ __html: product.description }}
+                  />
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -106,7 +110,9 @@ const ProductScreen = ({ history, match }) => {
                     <Row>
                       <Col>Estatus:</Col>
                       <Col>
-                        {product.countInStock > 0 ? 'In Stock' : 'Out Of Stock'}
+                        {product.countInStock > 0
+                          ? 'Disponible'
+                          : 'No Disponible'}
                       </Col>
                     </Row>
                   </ListGroup.Item>
