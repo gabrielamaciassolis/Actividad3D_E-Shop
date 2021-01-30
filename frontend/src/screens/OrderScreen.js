@@ -77,7 +77,15 @@ const OrderScreen = ({ match, history }) => {
   }, [dispatch, orderId, successPay, successDeliver, order])
 
   const successPaymentHandler = (paymentResult) => {
+    console.log('pago init')
+
     dispatch(payOrder(orderId, paymentResult))
+
+    console.log('pago end')
+  }
+
+  const errorPaymentHandler = (paymentResult) => {
+    console.log('error en el pago')
   }
 
   const deliverHandler = () => {
