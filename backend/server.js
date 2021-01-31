@@ -1,3 +1,4 @@
+import appInsights from 'applicationinsights'
 import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
@@ -10,6 +11,8 @@ import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+
+appInsights.setup().start()
 
 dotenv.config()
 

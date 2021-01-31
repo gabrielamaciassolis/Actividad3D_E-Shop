@@ -56,122 +56,127 @@ const ProfileScreen = ({ location, history }) => {
 
   return (
     <>
-    <Meta/>
-    <Row>
-      <Col md={3}>
-        <h2>User Profile</h2>
-        {message && <Message variant='danger'>{message}</Message>}
-        {}
-        {success && <Message variant='success'>Profile Updated</Message>}
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant='danger'>{error}</Message>
-        ) : (
-         
-          <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
-              <Form.Label>Nombre</Form.Label>
-              <Form.Control
-                type='name'
-                required
-                placeholder='nombre'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+      <Meta />
+      <Row>
+        <Col md={3}>
+          <h2>User Profile</h2>
+          {message && <Message variant='danger'>{message}</Message>}
+          {}
+          {success && <Message variant='success'>Profile Updated</Message>}
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant='danger'>{error}</Message>
+          ) : (
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId='name'>
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control
+                  type='name'
+                  required
+                  placeholder='nombre'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId='email'>
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type='email'
-                required
-                placeholder='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+              <Form.Group controlId='email'>
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  readOnly
+                  type='email'
+                  required
+                  placeholder='email'
+                  value={email}
+                ></Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId='password'>
-              <Form.Label>Contraseña</Form.Label>
-              <Form.Control
-                type='password'
-                required
-                placeholder='******'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+              <Form.Group controlId='password'>
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control
+                  type='password'
+                  required
+                  placeholder='******'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId='confirmPassword'>
-              <Form.Label>Confirma contraseña</Form.Label>
-              <Form.Control
-                type='password'
-                required
-                placeholder='******'
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+              <Form.Group controlId='confirmPassword'>
+                <Form.Label>Confirma contraseña</Form.Label>
+                <Form.Control
+                  type='password'
+                  required
+                  placeholder='******'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
 
-            <Button type='submit' variant='primary'>
-              Actualizar
-            </Button>
-          </Form>
-        )}
-      </Col>
-      <Col md={9}>
-        <h2>Mis Ordenes</h2>
-        {loadingOrders ? (
-          <Loader />
-        ) : errorOrders ? (
-          <Message variant='danger'>{errorOrders}</Message>
-        ) : (
-          <Table striped bordered hover responsive className='table-sm'>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>FECHA</th>
-                <th>TOTAL</th>
-                <th>PAGO</th>
-                <th>ENVIADO</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td>{order._id}</td>
-                  <td>{order.createdAt.substring(0, 10)}</td>
-                  <td>{order.totalPrice}</td>
-                  <td>
-                    {order.isPaid ? (
-                      order.paidAt.substring(0, 10)
-                    ) : (
-                      <i className='fas fa-times' style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    {order.isDelivered ? (
-                      order.deliveredAt.substring(0, 10)
-                    ) : (
-                      <i className='fas fa-times' style={{ color: 'red' }}></i>
-                    )}
-                  </td>
-                  <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>
-                        Detalles
-                      </Button>
-                    </LinkContainer>
-                  </td>
+              <Button type='submit' variant='primary'>
+                Actualizar
+              </Button>
+            </Form>
+          )}
+        </Col>
+        <Col md={9}>
+          <h2>Mis Ordenes</h2>
+          {loadingOrders ? (
+            <Loader />
+          ) : errorOrders ? (
+            <Message variant='danger'>{errorOrders}</Message>
+          ) : (
+            <Table striped bordered hover responsive className='table-sm'>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>FECHA</th>
+                  <th>TOTAL</th>
+                  <th>PAGO</th>
+                  <th>ENVIADO</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </Col>
-    </Row>
+              </thead>
+              <tbody>
+                {orders.map((order) => (
+                  <tr key={order._id}>
+                    <td>{order._id}</td>
+                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>{order.totalPrice}</td>
+                    <td>
+                      {order.isPaid ? (
+                        order.paidAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className='fas fa-times'
+                          style={{ color: 'red' }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      {order.isDelivered ? (
+                        order.deliveredAt.substring(0, 10)
+                      ) : (
+                        <i
+                          className='fas fa-times'
+                          style={{ color: 'red' }}
+                        ></i>
+                      )}
+                    </td>
+                    <td>
+                      <LinkContainer to={`/order/${order._id}`}>
+                        <Button className='btn-sm' variant='light'>
+                          Detalles
+                        </Button>
+                      </LinkContainer>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </Col>
+      </Row>
     </>
   )
 }

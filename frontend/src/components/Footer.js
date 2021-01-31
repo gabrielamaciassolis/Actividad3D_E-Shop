@@ -1,11 +1,11 @@
 import React from 'react'
-import { Container, Row, Col, Navbar, NavbarBrand } from 'react-bootstrap'
+import { Container, Row, Col, Image } from 'react-bootstrap'
 
 const Footer = () => {
   return (
     <footer>
       <Row>
-        <Col className='fluid bg-2  align-text-right'>
+        <Col className='fluid bg-2  text-left'>
           <Container>
             <i className='fab fa-facebook'>
               <a
@@ -23,6 +23,9 @@ const Footer = () => {
               <a href='@actividad.3d' target='_blank'></a>
             </i>
           </Container>
+        </Col>
+        <Col className='fluid bg-2  text-right'>
+          <Image src='/images/paypal_logos.png' width='210' />
         </Col>
       </Row>
       <Row>

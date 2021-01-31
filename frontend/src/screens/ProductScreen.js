@@ -150,6 +150,9 @@ const ProductScreen = ({ history, match }) => {
                       Agregar al carrito
                     </Button>
                   </ListGroup.Item>
+                  <ListGroup.Item>
+                    <Image src='/images/paypal_logos.png' fluid />
+                  </ListGroup.Item>
                 </ListGroup>
               </Card>
             </Col>

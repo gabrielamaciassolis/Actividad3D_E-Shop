@@ -26,6 +26,7 @@
   "homepage": "https://github.com/gamacias/Actividad3D_E-Shop#readme",
   "dependencies": {
     "@azure/storage-blob": "^12.4.0",
+    "applicationinsights": "^1.8.9",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
