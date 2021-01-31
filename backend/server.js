@@ -12,9 +12,9 @@ import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 
-appInsights.setup().start()
-
 dotenv.config()
+
+appInsights.setup(process.env.APPINSIGHTS_INSTRUMENTATIONKEY).start()
 
 connectDB()
 
@@ -33,6 +33,14 @@ app.use('/api/upload', uploadRoutes)
 
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
+)
+
+app.get('/api/config/sast', (req, res) =>
+  res.send(process.env.REACT_APP_STRSASTK)
+)
+
+app.get('/api/config/accn', (req, res) =>
+  res.send(process.env.REACT_APP_STRNAME)
 )
 
 const __dirname = path.resolve()

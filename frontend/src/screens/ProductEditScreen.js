@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import dotenv from 'dotenv'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,7 +12,6 @@ import path from 'path'
 //import uploadFileToBlob  from './actions/azureStorageActions'
 import { BlobServiceClient, ContainerClient } from '@azure/storage-blob'
 
-dotenv.config()
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id
 
@@ -70,14 +69,7 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }
 
-  // THIS IS SAMPLE CODE ONLY - DON'T STORE TOKEN IN PRODUCTION CODE
-  const sasToken =
-    process.env.storagesastoken ||
-    'sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacx&se=2021-03-13T14:33:29Z&st=2021-01-22T06:33:29Z&spr=https&sig=gAvPc3KgfpZOOKussREdLvDlEV3lMOkq%2FHLzDNZ%2FMos%3D' // Fto be removed soon
   const containerName = `cloudimages`
-  const storageAccountName =
-    process.env.storageresourcename || 'actividad3dstorage' // Fill string with your Storage resource name
-
   const createBlobInContainer = async (containerClient, file) => {
     const filename = file.name + '-' + Date.now()
     // create blobClient for container
@@ -85,7 +77,7 @@ const ProductEditScreen = ({ match, history }) => {
 
     // set mimetype as determined from browser with file upload control
     const options = { blobHTTPHeaders: { blobContentType: file.type } }
-
+    const { data: storageAccountName } = await axios.get('/api/config/accn')
     // upload file
     await blobClient.uploadBrowserData(file, options)
     // await blobClient.uploadBrowserData(file, options)
@@ -96,6 +88,9 @@ const ProductEditScreen = ({ match, history }) => {
 
   const uploadFileToBlob = async (file) => {
     if (!file) return {}
+
+    const { data: sasToken } = await axios.get('/api/config/sast')
+    const { data: storageAccountName } = await axios.get('/api/config/accn')
 
     // get BlobService = notice `?` is pulled out of sasToken - if created in Azure portal
     const blobService = new BlobServiceClient(
@@ -134,7 +129,6 @@ const ProductEditScreen = ({ match, history }) => {
         throw new Error('Solo imagenes!')
       }
       const data = await uploadFileToBlob(file)
-      console.log(data)
       // const { data } = await axios.post('/api/upload', formData, config)
 
       setImage(data)

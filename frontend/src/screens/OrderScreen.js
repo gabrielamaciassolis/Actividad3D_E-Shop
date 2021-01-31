@@ -207,7 +207,7 @@ const OrderScreen = ({ match, history }) => {
                 </Row>
               </ListGroup.Item>
 
-              {order.paymentMethod != 'PayPal o Tarjeta de Credito' && (
+              {order.paymentMethod !== 'PayPal o Tarjeta de Credito' && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
                   {!sdkReady ? <Loader /> : <Depositos />}
@@ -220,12 +220,16 @@ const OrderScreen = ({ match, history }) => {
                   {!sdkReady ? (
                     <Loader />
                   ) : (
-                    <PayPalButton
-                      amount={order.totalPrice}
-                      shippingPreference={'NO_SHIPPING'}
-                      currency={'MXN'}
-                      onSuccess={successPaymentHandler}
-                    />
+                    <>
+                      Si lo prefieres, puedes usar nuestras siguientes opciones:{' '}
+                      <br />
+                      <PayPalButton
+                        amount={order.totalPrice}
+                        shippingPreference={'NO_SHIPPING'}
+                        currency={'MXN'}
+                        onSuccess={successPaymentHandler}
+                      />
+                    </>
                   )}
                 </ListGroup.Item>
               )}

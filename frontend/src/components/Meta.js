@@ -14,8 +14,9 @@ const Meta = ({ title, description, keywords }) => {
 Meta.defaultProps = {
   title: 'Bienvenidos a Actividad3D',
   description:
-    'Impresión y tallado: figuras de acción, anime, videojuegos y mas',
-  keywords: 'Impresión y tallado: figuras de acción, anime, videojuegos y mas',
+    'Impresion 3d, Corte y Tallado Personalizado. Figuras de acción, anime, videojuegos y mas.Servicios de Prototipado y Productos finales. Nuevo León Mexico',
+  keywords:
+    'actividad3d, actividad 3d, figuras de accion, anime, videojuegos, prototipos, corte, tallado, impression3d, impression 3d, laser ,cnc, impresoras 3d',
 }
 
 export default Meta

@@ -20,25 +20,27 @@ const Header = () => {
     <header>
       <Navbar bg='light'>
         <Container className='d-flex flex-sm-row flex-column'>
-          <Nav.Link>
-            <a
-              href='https://wa.me/528122881759?text=Hola%20Actividad3D'
-              target='_blank'
-            >
-              <i className='fab fa-whatsapp'></i>{' '}
-              <strong>+52 81 2288 1759</strong>
-            </a>
-          </Nav.Link>
+          {/* <Nav.Link> */}
+          <a
+            href='https://wa.me/528122881759?text=Hola%20Actividad3D'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <i className='fab fa-whatsapp'></i>{' '}
+            <strong>+52 81 2288 1759</strong>
+          </a>
+          {/* </Nav.Link> */}
 
-          <Nav.Link>
-            <a
-              href='mailto:el.geek.encantador@gmail.com?subject=Hola%20Actividad3D'
-              target='_blank'
-            >
-              <i className='far fa-envelope'></i>{' '}
-              <strong>el.geek.encantador@gmail.com</strong>
-            </a>
-          </Nav.Link>
+          {/* <Nav.Link> */}
+          <a
+            href='mailto:actividad3d@outlook.com?subject=Hola%20Actividad3D'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <i className='far fa-envelope'></i>{' '}
+            <strong>actividad3d@outlook.com</strong>
+          </a>
+          {/* </Nav.Link> */}
         </Container>
       </Navbar>
 

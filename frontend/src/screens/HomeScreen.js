@@ -54,7 +54,7 @@ const HomeScreen = ({ match }) => {
             {/* <Row> */}
             {products.map((product) => (
               // <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-              <Product key = {product} product={product} />
+              <Product key={product._id} product={product} />
               // </Col>
             ))}
             {/* </Row> */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Button, Card } from 'react-bootstrap'
+import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
@@ -93,6 +93,18 @@ const ShippingScreen = ({ history }) => {
                 Continuar
               </Button>
             </Form>
+
+            {!country.toUpperCase().includes('MEXICO') && (
+              <>
+                <br />
+                <br />
+                <Alert variant={'warning'}>
+                  Eres un cliente internacional?
+                  <br />
+                  Contactanos para calcular el costo de tu envio apropiadamente.{' '}
+                </Alert>
+              </>
+            )}
           </Card.Body>
         </FormContainer>
       </Card>

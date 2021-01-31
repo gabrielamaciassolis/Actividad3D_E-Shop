@@ -1,25 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Yusei+Magic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+body,
+h1,
+h2,
+h3,
+strong {
+  font-family: 'Yusei+Magic', cursive;
+}
 
 main {
   min-height: 80vh;
-  font-family: 'Roboto', sans-serif;
 }
 
 h3 {
   padding: 1rem 0;
-  font-family: 'Yusei Magic', sans-serif !important;
 }
 
 h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
-  font-family: 'Yusei Magic', sans-serif !important;
 }
 
 h2 {
   font-size: 1.4rem;
   padding: 0.5rem 0;
-  font-family: 'Yusei Magic', sans-serif !important;
 }
 
 .bg-2 {
@@ -28,16 +32,6 @@ h2 {
 }
 
 /* Social Media */
-
-/* .social {
-  padding: 20px;
-  font-size: 30px;
-  width: 30px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
-} */
 
 .fab:hover {
   opacity: 0.7;
@@ -69,6 +63,18 @@ h2 {
 
 .fa-instagram {
   background: #125688;
+  color: white;
+  /* padding: 20px; */
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa-envelope.fab {
+  background: #86b7da;
   color: white;
   /* padding: 20px; */
   font-size: 30px;

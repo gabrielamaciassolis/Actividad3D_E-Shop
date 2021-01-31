@@ -26,7 +26,35 @@ const PlaceOrderScreen = ({ history }) => {
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
-  cart.shippingPrice = addDecimals(200)
+
+  const calculateShipping = (num) => {
+    if (!cart.shippingAddress.country.toUpperCase().includes('MEXICO')) {
+      return 1000
+    } else if (cart.shippingAddress.country.toUpperCase().includes('MEXICO')) {
+      if (
+        cart.shippingAddress.city.toUpperCase().includes('MONTERREY') ||
+        cart.shippingAddress.city.toUpperCase().includes('GUADALUPE') ||
+        cart.shippingAddress.city.toUpperCase().includes('SAN NICOLAS') ||
+        cart.shippingAddress.city.toUpperCase().includes('ESCOBEDO') ||
+        cart.shippingAddress.city.toUpperCase().includes('APODACA') ||
+        cart.shippingAddress.city.toUpperCase().includes('SAN PEDRO') ||
+        cart.shippingAddress.city.toUpperCase().includes('SANTA CATALINA')
+      ) {
+        return 45
+      } else if (
+        cart.shippingAddress.city.toUpperCase().includes('JUAREZ') ||
+        cart.shippingAddress.city.toUpperCase().includes('GARCIA')
+      ) {
+        return 110
+      } else {
+        return 130
+      }
+    }
+
+    return 200
+  }
+
+  cart.shippingPrice = addDecimals(calculateShipping(200))
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)))
   cart.totalPrice = (
     Number(cart.itemsPrice) + Number(cart.shippingPrice)
