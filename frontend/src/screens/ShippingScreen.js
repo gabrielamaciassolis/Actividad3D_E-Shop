@@ -94,17 +94,19 @@ const ShippingScreen = ({ history }) => {
               </Button>
             </Form>
 
-            {!country.toUpperCase().includes('MEXICO') && (
-              <>
-                <br />
-                <br />
-                <Alert variant={'warning'}>
-                  Eres un cliente internacional?
+            {country !== undefined &&
+              !country.toUpperCase().includes('MEXICO') && (
+                <>
                   <br />
-                  Contactanos para calcular el costo de tu envio apropiadamente.{' '}
-                </Alert>
-              </>
-            )}
+                  <br />
+                  <Alert variant={'warning'}>
+                    Eres un cliente internacional?
+                    <br />
+                    Contactanos para calcular el costo de tu envio
+                    apropiadamente.{' '}
+                  </Alert>
+                </>
+              )}
           </Card.Body>
         </FormContainer>
       </Card>
