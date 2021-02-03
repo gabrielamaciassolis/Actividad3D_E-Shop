@@ -39,6 +39,10 @@ const Footer = () => {
             >
               <i className='far fa-envelope fab'></i>{' '}
             </a>
+            <span className='strong'>
+              {' '}
+              Pregunta por nuestros precios de Mayoreo
+            </span>
           </Container>
         </Col>
         <Col className='fluid bg-2  text-right'>

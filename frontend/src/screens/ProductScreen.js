@@ -153,6 +153,10 @@ const ProductScreen = ({ history, match }) => {
                   <ListGroup.Item>
                     <Image src='/images/paypal_logos.png' fluid />
                   </ListGroup.Item>
+                  <ListGroup.Item>
+                    {' '}
+                    Contáctanos para personalizar tus productos.
+                  </ListGroup.Item>
                 </ListGroup>
               </Card>
             </Col>

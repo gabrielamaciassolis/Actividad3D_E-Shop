@@ -44,7 +44,13 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      <Navbar bg='primary' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar
+        bg='primary'
+        variant='dark'
+        expand='lg'
+        sticky='top'
+        collapseOnSelect
+      >
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>

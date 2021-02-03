@@ -46,14 +46,7 @@ const ProductCarousel = () => {
     <Container fluid>
       <Row className='justify-content-center align-items-center '>
         <Col>
-          <br />
-          <p>
-            Impresion 3d, Corte y Tallado Personalizado.
-            <br /> Servicios de Prototipado y Productos finales.
-          </p>
-        </Col>
-        <Col>
-          <Image src='/images/Picture2.jpg' alt='' fluid />
+          <Image src='/images/cajitas_homev2.jpg' alt='' fluid />
         </Col>
       </Row>
     </Container>

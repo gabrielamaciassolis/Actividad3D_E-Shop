@@ -80,11 +80,10 @@ const OrderScreen = ({ match, history }) => {
   }, [dispatch, orderId, successPay, successDeliver, order])
 
   const successPaymentHandler = (paymentResult) => {
-    console.log('pago init')
+  
 
     dispatch(payOrder(orderId, paymentResult))
 
-    console.log('pago end')
   }
 
   const errorPaymentHandler = (paymentResult) => {
@@ -128,7 +127,7 @@ const OrderScreen = ({ match, history }) => {
                 <Message variant='danger'>No Enviado</Message>
               )}
             </ListGroup.Item>
-            Trabajamos sobre pedido en todos nuestros diseños y tardamos de 7 a
+            Trabajamos sobre pedido en todos nuestros productos y tardamos de 7 a
             10 dias hábiles.
             <ListGroup.Item></ListGroup.Item>
             <ListGroup.Item>
@@ -221,8 +220,7 @@ const OrderScreen = ({ match, history }) => {
                     <Loader />
                   ) : (
                     <>
-                      Si lo prefieres, puedes usar nuestras siguientes opciones:{' '}
-                      <br />
+                    
                       <PayPalButton
                         amount={order.totalPrice}
                         shippingPreference={'NO_SHIPPING'}
