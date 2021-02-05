@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
+import categories from '../data/categories.js'
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -157,6 +158,13 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products)
 })
 
+// @desc    Get tcategories
+// @route   GET /api/products/Categories
+// @access  Public
+const getCategories = asyncHandler(async (req, res) => {
+  res.json(categories)
+})
+
 export {
   getProducts,
   getProductById,
@@ -165,4 +173,5 @@ export {
   updateProduct,
   createProductReview,
   getTopProducts,
+  getCategories,
 }

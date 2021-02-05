@@ -188,11 +188,11 @@ const PlaceOrderScreen = ({ history }) => {
 
               <ListGroup.Item>
                 Trabajamos sobre pedido en todos nuestros diseños y tardamos de
-                7 a 10 dias hábiles. Agradecemos tu comprensión y tu confianza.
-                Si das click en "Proceder al pago", entendemos que aceptas ésta
-                condición. De cualquier manera, si llegamos a tener tus
-                productos antes de lo indicado, te los enviaremos con mucho
-                gusto.
+                7 a 10 dias hábiles en Mascaras y de 2 a 3 dias en el resto de
+                productos. Agradecemos tu comprensión y tu confianza. Si das
+                click en "Proceder al pago", entendemos que aceptas ésta
+                condición. De cualquier manera, tan pronto como tu producto este
+                listo, te los enviaremos con mucho gusto.
               </ListGroup.Item>
             </ListGroup>
           </Card>

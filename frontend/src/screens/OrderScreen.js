@@ -127,8 +127,7 @@ const OrderScreen = ({ match, history }) => {
                 <Message variant='danger'>No Enviado</Message>
               )}
             </ListGroup.Item>
-            Trabajamos sobre pedido en todos nuestros productos y tardamos de 7 a
-            10 dias hábiles.
+            Trabajamos sobre pedido en todos nuestros productos y tardamos de 7 a 10 dias hábiles en Mascaras y de 2 a 3 dias en el resto de productos.
             <ListGroup.Item></ListGroup.Item>
             <ListGroup.Item>
               <h2>Metodo de Pago</h2>
