@@ -67,6 +67,11 @@ const LoginScreen = ({ location, history }) => {
             Registrate
           </Link>
         </Col>
+        {/* <Col>
+          <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
+            Olvide mi Contraseña{' '}
+          </Link>
+        </Col> */}
       </Row>
     </FormContainer>
   )

@@ -1,13 +1,13 @@
 import React from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const Footer = () => {
   return (
     <footer>
-      <Row>
-        <Col className='fluid bg-2  text-left'>
-          <Container>
+      <container>
+        <Row className='bg-2 text-center'>
+          <Col className=' pl-5' sm={12} md={4}>
             <a
               href='https://www.facebook.com/Actividad-3D-112294450296839/'
               target='_blank'
@@ -39,19 +39,28 @@ const Footer = () => {
             >
               <i className='far fa-envelope fab'></i>{' '}
             </a>
-            <span className='strong'>
+          </Col>
+          <Col sm={12} md={4}>
+            <span className='strong px-3'>
               {' '}
               Pregunta por nuestros precios de Mayoreo
             </span>
-          </Container>
-        </Col>
-        <Col className='fluid bg-2  text-right'>
-          <Image src='/images/paypal_logos.png' width='210' />
-        </Col>
-      </Row>
-      <Row>
-        <Col className='text-center py-3'>Copyright &copy;2021 Actividad3D</Col>
-      </Row>
+          </Col>
+          <Col className='pr-5 text-center' sm={12} md={4}>
+            <Image src='/images/paypal_logos.png' width='210' />
+          </Col>
+        </Row>
+        <Row className='bg-1'>
+          <Col className='text-left py-3 pl-5'>
+            Copyright &copy;2021 Actividad3D
+          </Col>
+          <Col className='text-right py-3 pr-5'>
+            <LinkContainer to='/termsandconditions'>
+              <a>Terminos y condiciones</a>
+            </LinkContainer>
+          </Col>
+        </Row>
+      </container>
     </footer>
   )
 }
