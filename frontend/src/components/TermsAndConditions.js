@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { Container } from 'react-bootstrap'
 const TermsAndConditions = () => {
   return (
-    <container>
+    <Container>
       <h1>Terminos y condiciones</h1>
       <h5> CONDICIONES DE SERVICIO</h5>
       <br />
@@ -538,7 +538,7 @@ const TermsAndConditions = () => {
       <br />
       <br />
       actividad3d Re: Oficial de Cumplimiento de la Privacidad
-    </container>
+    </Container>
   )
 }
 

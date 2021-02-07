@@ -14,6 +14,7 @@ const RegisterScreen = ({ location, history }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
+  const [strengthPass, setStrengthPass] = useState('cadetblue')
 
   const dispatch = useDispatch()
 
@@ -26,12 +27,36 @@ const RegisterScreen = ({ location, history }) => {
     if (userInfo) {
       history.push(redirect)
     }
-  }, [history, userInfo, redirect])
+    setMessage('')
+    analyzePass()
+  }, [history, userInfo, redirect, password])
+
+  const mediumRegex = new RegExp(
+    '^(((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})'
+  )
+
+  const analyzePass = () => {
+    console.log(password)
+    if (password.length > 0 && mediumRegex.test(password)) {
+      setStrengthPass('cadetblue')
+      console.log(strengthPass)
+    } else if (password.length > 0) {
+      setStrengthPass('coral')
+      console.log(strengthPass)
+    }
+  }
 
   const submitHandler = (e) => {
     e.preventDefault()
+
+    console.log(strengthPass)
+
     if (password !== confirmPassword) {
       setMessage('Las contraseñas no coinciden')
+    } else if (strengthPass === 'coral') {
+      setMessage(
+        'Ingrese una contraseña mas segura. Debe contener al menos un numero o una mayuscula'
+      )
     } else {
       dispatch(register(name, email, password))
     }
@@ -41,7 +66,7 @@ const RegisterScreen = ({ location, history }) => {
     <>
       <Meta />
       <FormContainer>
-        <h1>Sign Up</h1>
+        <h1>Crea una cuenta</h1>
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
         {loading && <Loader />}
@@ -71,9 +96,10 @@ const RegisterScreen = ({ location, history }) => {
           <Form.Group controlId='password'>
             <Form.Label>Contraseña</Form.Label>
             <Form.Control
+              style={{ borderColor: strengthPass }}
               type='password'
               required
-              placeholder='******'
+              placeholder='*****'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
@@ -82,9 +108,10 @@ const RegisterScreen = ({ location, history }) => {
           <Form.Group controlId='confirmPassword'>
             <Form.Label>Confirmar contraseña</Form.Label>
             <Form.Control
+              style={{ borderColor: strengthPass }}
               type='password'
               required
-              placeholder='******'
+              placeholder='*****'
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             ></Form.Control>

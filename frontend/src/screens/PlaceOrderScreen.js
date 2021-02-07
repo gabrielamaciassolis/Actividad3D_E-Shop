@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -8,50 +8,81 @@ import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 import { USER_DETAILS_RESET } from '../constants/userConstants'
 import Meta from '../components/Meta'
+
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
+
+  let receivedOffer = false
 
   if (!cart.shippingAddress.address) {
     history.push('/shipping')
   } else if (!cart.paymentMethod) {
     history.push('/payment')
   }
+
   //   Calculate prices
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
   }
 
-  cart.itemsPrice = addDecimals(
+  const calculateMayoreo = (num) => {
+    return cart.cartItems.reduce(
+      (acc, item) =>
+        acc +
+        (item.qty >= 10
+          ? item.price * item.qty - item.price * item.qty * 0.3
+          : item.price * item.qty),
+      0
+    )
+    // return cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  }
+
+  const normalPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
   )
 
+  cart.itemsPrice = addDecimals(calculateMayoreo())
+
+  if (Number(cart.itemsPrice) < Number(normalPrice)) {
+    receivedOffer = true
+  }
+
   const calculateShipping = (num) => {
-    if (!cart.shippingAddress.country.toUpperCase().includes('MEXICO')) {
+    if (!cart.shippingAddress.country.includes('México')) {
+      // International
       return 1000
-    } else if (cart.shippingAddress.country.toUpperCase().includes('MEXICO')) {
+    } else if (cart.shippingAddress.country.includes('México')) {
       if (
-        cart.shippingAddress.city.toUpperCase().includes('MONTERREY') ||
+        cart.shippingAddress.city.toUpperCase().startsWith('MONTERREY') ||
         cart.shippingAddress.city.toUpperCase().includes('GUADALUPE') ||
         cart.shippingAddress.city.toUpperCase().includes('SAN NICOLAS') ||
+        cart.shippingAddress.city.includes('San Nicolás') ||
         cart.shippingAddress.city.toUpperCase().includes('ESCOBEDO') ||
         cart.shippingAddress.city.toUpperCase().includes('APODACA') ||
         cart.shippingAddress.city.toUpperCase().includes('SAN PEDRO') ||
-        cart.shippingAddress.city.toUpperCase().includes('SANTA CATALINA')
+        cart.shippingAddress.city.toUpperCase().includes('SANTA CATARINA') ||
+        cart.shippingAddress.city.toUpperCase().includes('STA. CATARINA') ||
+        cart.shippingAddress.city.toUpperCase().includes('STA CATARINA')
       ) {
+        //Metropolitan
         return 45
       } else if (
-        cart.shippingAddress.city.toUpperCase().includes('JUAREZ') ||
-        cart.shippingAddress.city.toUpperCase().includes('GARCIA')
+        cart.shippingAddress.postalCode.toUpperCase().startsWith('64') ||
+        cart.shippingAddress.postalCode.toUpperCase().startsWith('65') ||
+        cart.shippingAddress.postalCode.toUpperCase().startsWith('66') ||
+        cart.shippingAddress.postalCode.toUpperCase().startsWith('67')
       ) {
+        // NL
         return 110
       } else {
+        // Rest of Mexico
         return 130
       }
     }
 
-    return 200
+    return 130
   }
 
   cart.shippingPrice = addDecimals(calculateShipping(200))
@@ -97,7 +128,8 @@ const PlaceOrderScreen = ({ history }) => {
               <h2>Envío</h2>
               <p>
                 <strong>Dirección: </strong>
-                {cart.shippingAddress.address}, {cart.shippingAddress.city}{' '}
+                {cart.shippingAddress.address},{' '}
+                {cart.shippingAddress.neighborhood}, {cart.shippingAddress.city}{' '}
                 {cart.shippingAddress.postalCode},{' '}
                 {cart.shippingAddress.country}
               </p>
@@ -110,7 +142,7 @@ const PlaceOrderScreen = ({ history }) => {
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Productos en la orden</h2>
+              <h2>Productos en la Órden</h2>
               {cart.cartItems.length === 0 ? (
                 <Message>Tu carrito esta vacío</Message>
               ) : (
@@ -174,6 +206,12 @@ const PlaceOrderScreen = ({ history }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 {error && <Message variant='danger'>{error}</Message>}
+                {receivedOffer && !error && (
+                  <Message variant='danger'>
+                    Mas de 10 piezas del mismo producto otorgan un 30% en ese
+                    articulo
+                  </Message>
+                )}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button

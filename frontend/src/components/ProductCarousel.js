@@ -20,7 +20,7 @@ const ProductCarousel = () => {
   const { loading, error, products } = productTopRated
 
   useEffect(() => {
-    dispatch(listTopProducts())
+    //  dispatch(listTopProducts())
   }, [dispatch])
 
   return loading ? (

@@ -37,16 +37,15 @@ const OrderScreen = ({ match, history }) => {
   const { userInfo } = userLogin
 
   if (!loading) {
-    console.log(order.paymentMethod)
+ 
+    // //   Calculate prices
+    // const addDecimals = (num) => {
+    //   return (Math.round(num * 100) / 100).toFixed(2)
+    // }
 
-    //   Calculate prices
-    const addDecimals = (num) => {
-      return (Math.round(num * 100) / 100).toFixed(2)
-    }
-
-    order.itemsPrice = addDecimals(
-      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
-    )
+    // order.itemsPrice = addDecimals(
+    //   order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    // )
   }
 
   useEffect(() => {
@@ -115,7 +114,7 @@ const OrderScreen = ({ match, history }) => {
               </p>
               <p>
                 <strong>Dirección: </strong>
-                {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
+                {order.shippingAddress.address}, {order.shippingAddress.neighborhood}, {order.shippingAddress.city}{' '}
                 {order.shippingAddress.postalCode},{' '}
                 {order.shippingAddress.country}
               </p>
@@ -142,7 +141,7 @@ const OrderScreen = ({ match, history }) => {
               )}
             </ListGroup.Item>
             <ListGroup.Item>
-              <h2>Productos en la orden</h2>
+              <h2>Productos en la Órden</h2>
               {order.orderItems.length === 0 ? (
                 <Message>La orden esta vacia</Message>
               ) : (
