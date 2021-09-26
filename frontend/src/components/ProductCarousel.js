@@ -46,7 +46,7 @@ const ProductCarousel = () => {
     <Container fluid>
       <Row className='justify-content-center align-items-center '>
         <Col>
-          <Image src='/images/cajitas_homev2.jpg' alt='' fluid />
+          <Image src='/images/otono.png' alt='' fluid />
         </Col>
       </Row>
     </Container>

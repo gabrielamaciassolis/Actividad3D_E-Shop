@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
-import categories from '../data/categories.js'
+// import categories from '../data/categories.js'
 
 // @desc    Fetch all products
 // @route   GET /api/products
