@@ -43,7 +43,7 @@ const HomeScreen = ({ match }) => {
         )}
       </>
 
-      <h1>Últimas novedades</h1>
+      <h1>Lo mas nuevo</h1>
       {loading ? (
         <Loader />
       ) : error ? (
