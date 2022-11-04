@@ -4,9 +4,14 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 const Footer = () => {
   return (
-    <footer>
-      <Row className='bg-2 text-center'>
-        <Col className=' pl-5' sm={12} md={4}>
+<footer className="text-center text-lg-start text-dark">
+  <div
+       className="bg-2 d-flex justify-content-between p-2 text-white">
+      <div>
+        <span>Conéctate con nosotros en las redes sociales:</span>
+      </div>
+
+      <div>
           <a
             href='https://www.facebook.com/Actividad-3D-112294450296839/'
             target='_blank'
@@ -38,28 +43,22 @@ const Footer = () => {
           >
             <i className='far fa-envelope fab'></i>{' '}
           </a>
-        </Col>
-        <Col sm={12} md={4}>
-          <span className='strong px-3'>
-            {' '}
-            Pregunta por nuestros precios de Mayoreo
-          </span>
-        </Col>
-        <Col className='pr-5 text-center' sm={12} md={4}>
-          <Image src='/images/paypal_logos.png' width='210' />
-        </Col>
-      </Row>
-      <Row className='bg-1'>
-        <Col className='text-left py-3 pl-5'>
-          Copyright &copy;2021 Actividad3D | Saludos desde Nuevo León
-        </Col>
-        <Col className='text-right py-3 pr-5'>
-          <LinkContainer to='/termsandconditions'>
-            <a>Terminos y condiciones</a>
-          </LinkContainer>
-        </Col>
-      </Row>
-    </footer>
+      </div>
+
+      <div>
+          <span>Pregunta por nuestros precios de Mayoreo</span>
+      </div>
+  </div>
+
+  <div
+         className="text-center p-3"
+         >
+      © 2022
+      <a className="text-dark" href="https://mdbootstrap.com/"
+         > Actividad3D.com - &#10084; desde Nuevo León</a
+        >
+  </div>
+</footer>
   )
 }
 
