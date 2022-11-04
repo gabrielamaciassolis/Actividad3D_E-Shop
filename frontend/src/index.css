@@ -29,13 +29,15 @@ h2 {
 }
 
 .bg-2 {
-  background-color: gray; /* Dark Blue */
-  color: #ffffff;
+  background-color: #73A0A6; /* Dark Blue */
+}
+
+.bg-3 {
+  background-color: #ecf3ff;
 }
 
 .bg-1 {
   background-color: white; /* Dark Blue */
-  color: cadetblue;
 }
 
 /* Social Media */
